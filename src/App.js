@@ -8,7 +8,7 @@ import Totals from './Totals';
 import logo from './logo.svg';
 import './App.css';
 
-// TODO: Move header to its own component
+// TODO: Move header to its own component, add reset button etc.
 
 function App() {
   return (
@@ -17,8 +17,10 @@ function App() {
         <h2>BudgeIt</h2>
       </header>
       <IncomeInput />
-      <FixedSpending />
-      <VariableSpending />
+      <div className="spending-container">
+        <FixedSpending />
+        <VariableSpending />
+      </div>
       <Totals />
     </div>
   );

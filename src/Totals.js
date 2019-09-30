@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 
 export default class Totals extends Component {
   render() {
     return (
-      <div>
-        <h1>Totals</h1>
-      </div>
+      <FooterWrapper>
+        <h2>Totals</h2>
+      </FooterWrapper>
     );
   }
 }
+
+// Styled Components
+const FooterWrapper = styled.footer`
+  background: #222;
+  color: #fff;
+  padding: 16px;
+`;

@@ -3,6 +3,10 @@ import Card from './Card';
 
 export default class IncomeInput extends Component {
   render() {
-    return <Card />;
+    return (
+      <div>
+        <Card title={'Monthly Income'} />
+      </div>
+    );
   }
 }

@@ -21,3 +21,8 @@
   color: white;
   padding: 1rem;
 }
+
+.spending-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}

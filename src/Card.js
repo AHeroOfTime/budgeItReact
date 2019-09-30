@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
+import SICardForm from './SICardForm';
+
 export default class Card extends Component {
   render() {
     return (
       <CardWrapper>
-        <CardTitle>Monthly Income</CardTitle>
+        <CardTitle>{this.props.title}</CardTitle>
         <CardBody>
-          <CardForm>
-            <CardInput type="number" placeholder="Income" />
-            <Button>Submit</Button>
-          </CardForm>
+          <SICardForm />
         </CardBody>
       </CardWrapper>
     );
@@ -34,25 +33,4 @@ const CardTitle = styled.p`
 
 const CardBody = styled.div`
   padding: 20px;
-`;
-
-const CardForm = styled.form`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 2rem;
-`;
-
-const CardInput = styled.input`
-  padding: 0.5rem;
-`;
-
-const Button = styled.button`
-  padding: 0.5rem;
-  border-radius: 0.25rem;
-  font-size: 1rem;
-  border: none;
-
-  &:hover {
-    background: green;
-  }
 `;
