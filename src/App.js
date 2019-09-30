@@ -8,11 +8,13 @@ import Totals from './Totals';
 import logo from './logo.svg';
 import './App.css';
 
+// TODO: Move header to its own component
+
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Header</h1>
+        <h2>BudgeIt</h2>
       </header>
       <IncomeInput />
       <FixedSpending />
