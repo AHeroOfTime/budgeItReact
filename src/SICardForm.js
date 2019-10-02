@@ -1,13 +1,30 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
+import { SpendingContext } from './SpendingContext';
+
 export default class SICardForm extends Component {
+  submitIncome = e => {
+    e.preventDefault();
+    this.setState({
+      income: this.income.value,
+    });
+  };
+
   render() {
     return (
-      <CardForm>
-        <CardInput type="number" placeholder="Income" />
-        <Button>Submit</Button>
-      </CardForm>
+      <SpendingContext.Consumer>
+        {context => (
+          <CardForm>
+            <CardInput
+              type="number"
+              ref={input => (this.income = input)}
+              placeholder="Income"
+            />
+            <Button onClick={this.submitIncome}>Submit</Button>
+          </CardForm>
+        )}
+      </SpendingContext.Consumer>
     );
   }
 }
