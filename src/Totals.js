@@ -1,22 +1,21 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
 import { SpendingContext } from './SpendingContext';
+import { useInputSubmit } from './hooks/useInputSubmit';
 
-export default class Totals extends Component {
-  render() {
-    return (
-      <SpendingContext.Consumer>
-        {context => (
-          <FooterWrapper>
-            <h2>Totals</h2>
-            <p>{context.spending.income}</p>
-          </FooterWrapper>
-        )}
-      </SpendingContext.Consumer>
-    );
-  }
-}
+const Totals = () => {
+  const ref = useRef();
+
+  return (
+    <FooterWrapper>
+      <h2>Totals</h2>
+      <p>{'a'}</p>
+    </FooterWrapper>
+  );
+};
+
+export default Totals;
 
 // Styled Components
 const FooterWrapper = styled.footer`

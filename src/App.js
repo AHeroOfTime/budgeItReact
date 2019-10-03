@@ -30,7 +30,7 @@ class SpendingProvider extends Component {
   }
 }
 
-function App() {
+const App = () => {
   return (
     <SpendingProvider>
       <div className="App">
@@ -46,6 +46,6 @@ function App() {
       </div>
     </SpendingProvider>
   );
-}
+};
 
 export default App;

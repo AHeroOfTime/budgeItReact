@@ -3,18 +3,18 @@ import styled from 'styled-components';
 
 import SICardForm from './SICardForm';
 
-export default class Card extends Component {
-  render() {
-    return (
-      <CardWrapper>
-        <CardTitle>{this.props.title}</CardTitle>
-        <CardBody>
-          <SICardForm />
-        </CardBody>
-      </CardWrapper>
-    );
-  }
-}
+const Card = props => {
+  return (
+    <CardWrapper>
+      <CardTitle>{props.title}</CardTitle>
+      <CardBody>
+        <SICardForm />
+      </CardBody>
+    </CardWrapper>
+  );
+};
+
+export default Card;
 
 // Styled Components
 export const CardWrapper = styled.div`
