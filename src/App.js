@@ -12,43 +12,48 @@ import './App.css';
 // TODO: Move header to its own component, add reset button etc.
 // TODO: Replace context w/ hook?
 
-class SpendingProvider extends Component {
-  state = {
-    income: 0,
-    fixedSpending: 0,
-    variableSpending: 0,
-  };
+// class SpendingProvider extends Component {
+//   state = {
+//     income: 0,
+//     fixedSpending: 0,
+//     variableSpending: 0,
+//   };
 
-  render() {
-    return (
-      <SpendingContext.Provider
-        value={{
-          spending: this.state,
-        }}
-      >
-        {this.props.children}
-      </SpendingContext.Provider>
-    );
-  }
-}
+//   render() {
+//     return (
+//       <SpendingContext.Provider
+//         value={{
+//           spending: this.state,
+//         }}
+//       >
+//         {this.props.children}
+//       </SpendingContext.Provider>
+//     );
+//   }
+// }
 
 const App = () => {
   const [state, setState] = useState({
-    income: 0,
+    income: 10,
     fixedSpending: 0,
     variableSpending: 0,
   });
 
   const addIncome = income => {
     setState({
+      // Create copy of state, update income value
       ...state,
       income: income,
     });
-    console.log(state.income);
   };
 
   return (
-    <SpendingProvider>
+    <SpendingContext.Provider
+      // spread state in context provider
+      value={{
+        ...state,
+      }}
+    >
       <div className="App">
         <header className="App-header">
           <h2>BudgeIt</h2>
@@ -60,7 +65,7 @@ const App = () => {
         </div>
         <Totals state={state} />
       </div>
-    </SpendingProvider>
+    </SpendingContext.Provider>
   );
 };
 
