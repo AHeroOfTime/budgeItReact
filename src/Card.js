@@ -8,7 +8,7 @@ const Card = props => {
     <CardWrapper>
       <CardTitle>{props.title}</CardTitle>
       <CardBody>
-        <SICardForm />
+        <SICardForm addIncome={props.addIncome} />
       </CardBody>
     </CardWrapper>
   );

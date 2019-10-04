@@ -1,4 +1,4 @@
-import React, { Component, createContext } from 'react';
+import React, { Component, createContext, useState } from 'react';
 
 import IncomeInput from './IncomeInput';
 import FixedSpending from './FixedSpending';
@@ -15,6 +15,8 @@ import './App.css';
 class SpendingProvider extends Component {
   state = {
     income: 0,
+    fixedSpending: 0,
+    variableSpending: 0,
   };
 
   render() {
@@ -31,18 +33,32 @@ class SpendingProvider extends Component {
 }
 
 const App = () => {
+  const [state, setState] = useState({
+    income: 0,
+    fixedSpending: 0,
+    variableSpending: 0,
+  });
+
+  const addIncome = income => {
+    setState({
+      ...state,
+      income: income,
+    });
+    console.log(state.income);
+  };
+
   return (
     <SpendingProvider>
       <div className="App">
         <header className="App-header">
           <h2>BudgeIt</h2>
         </header>
-        <IncomeInput />
+        <IncomeInput addIncome={addIncome} />
         <div className="spending-container">
           <FixedSpending />
           <VariableSpending />
         </div>
-        <Totals />
+        <Totals state={state} />
       </div>
     </SpendingProvider>
   );

@@ -4,18 +4,21 @@ import styled from 'styled-components';
 import { SpendingContext } from './SpendingContext';
 import { useInputSubmit } from './hooks/useInputSubmit';
 
-const SICardForm = () => {
+const SICardForm = props => {
   const inputRef = useRef();
   const h3Ref = useRef();
 
+  const submitIncome = e => {
+    e.preventDefault();
+    // Grab h3 reference, and update with input value
+    h3Ref.current.innerText = inputRef.current.value;
+
+    const income = inputRef.current.value;
+    props.addIncome(income);
+  };
+
   return (
-    <CardForm
-      onSubmit={e => {
-        e.preventDefault();
-        // Grab h3 reference, and update with input value
-        h3Ref.current.innerText = inputRef.current.value;
-      }}
-    >
+    <CardForm onSubmit={submitIncome}>
       <CardInput type="number" placeholder="Income" ref={inputRef} />
       <Button>Submit</Button>
       <h3 ref={h3Ref}>Income</h3>

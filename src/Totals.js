@@ -1,16 +1,16 @@
-import React, { Component, useEffect, useRef } from 'react';
+import React, { Component, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 
 import { SpendingContext } from './SpendingContext';
 import { useInputSubmit } from './hooks/useInputSubmit';
 
-const Totals = () => {
-  const ref = useRef();
+const Totals = props => {
+  const totalIncomeRef = useRef();
 
   return (
     <FooterWrapper>
       <h2>Totals</h2>
-      <p>{'a'}</p>
+      <p ref={totalIncomeRef}>{props.state.income}</p>
     </FooterWrapper>
   );
 };
