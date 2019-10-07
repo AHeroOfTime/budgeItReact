@@ -2,11 +2,9 @@ import React, { Component, useRef, useContext } from 'react';
 import styled from 'styled-components';
 
 import { SpendingContext } from './SpendingContext';
-import { useInputSubmit } from './hooks/useInputSubmit';
 
 const Totals = props => {
   // todo: May not need this ref anymore
-  const totalIncomeRef = useRef();
   // Context
   const totalValues = useContext(SpendingContext);
   // ! Remove log
@@ -15,7 +13,6 @@ const Totals = props => {
   return (
     <FooterWrapper>
       <h2>Totals</h2>
-      <p ref={totalIncomeRef}>Prop Drilling?: {props.state.income}</p>
       <p>Context Value: {totalValues.income}</p>
     </FooterWrapper>
   );

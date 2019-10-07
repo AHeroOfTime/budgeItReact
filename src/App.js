@@ -1,4 +1,4 @@
-import React, { Component, createContext, useState } from 'react';
+import React, { useState } from 'react';
 
 import IncomeInput from './IncomeInput';
 import FixedSpending from './FixedSpending';
@@ -9,30 +9,11 @@ import { SpendingContext } from './SpendingContext';
 import logo from './logo.svg';
 import './App.css';
 
-// TODO: Move header to its own component, add reset button etc.
-// TODO: Replace context w/ hook?
-
-// class SpendingProvider extends Component {
-//   state = {
-//     income: 0,
-//     fixedSpending: 0,
-//     variableSpending: 0,
-//   };
-
-//   render() {
-//     return (
-//       <SpendingContext.Provider
-//         value={{
-//           spending: this.state,
-//         }}
-//       >
-//         {this.props.children}
-//       </SpendingContext.Provider>
-//     );
-//   }
-// }
+// TODO: Move header to its own component, add reset button etc.?
+// TODO: Add Check to inputs for up to 2 decimal places
 
 const App = () => {
+  // Creating the app's state w/ hook
   const [state, setState] = useState({
     income: 10,
     fixedSpending: 0,
@@ -63,7 +44,7 @@ const App = () => {
           <FixedSpending />
           <VariableSpending />
         </div>
-        <Totals state={state} />
+        <Totals />
       </div>
     </SpendingContext.Provider>
   );
