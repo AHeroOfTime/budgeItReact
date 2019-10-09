@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 
-export default class FixedSpending extends Component {
-  render() {
-    return <h2>Fixed</h2>;
-  }
-}
+import Card from './Card';
+
+const FixedSpending = () => {
+  return (
+    <div>
+      <Card title={'Fixed Spending'} />
+    </div>
+  );
+};
+
+export default FixedSpending;

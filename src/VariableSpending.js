@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 
-export default class VariableSpending extends Component {
-  render() {
-    return <h2>Variable</h2>;
-  }
-}
+import Card from './Card';
+
+const VariableSpending = () => {
+  return (
+    <div>
+      <Card title={'Variable Spending'} />
+    </div>
+  );
+};
+
+export default VariableSpending;

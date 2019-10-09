@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
 
-const SICardForm = props => {
-  // Single Input Card Form
+const DICardForm = props => {
+  // Double Input Card Form
   // Create ref for input in form
   const inputRef = useRef();
 
@@ -18,13 +18,14 @@ const SICardForm = props => {
 
   return (
     <CardForm onSubmit={submitIncome}>
+      <CardInput type="text" placeholder="Title" />
       <CardInput type="number" placeholder="Income" ref={inputRef} />
       <Button>Submit</Button>
     </CardForm>
   );
 };
 
-export default SICardForm;
+export default DICardForm;
 
 // Styled Components
 const CardForm = styled.form`

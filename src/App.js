@@ -9,8 +9,9 @@ import { SpendingContext } from './SpendingContext';
 import logo from './logo.svg';
 import './App.css';
 
-// TODO: Move header to its own component, add reset button etc.?
+// TODO: Move header to its own component, add reset button(_there or to total?)
 // TODO: Add Check to inputs for up to 2 decimal places
+// TODO: Create format function for inputs strings -> numbers
 
 const App = () => {
   // Creating the app's state w/ hook
@@ -30,7 +31,7 @@ const App = () => {
 
   return (
     <SpendingContext.Provider
-      // spread state in context provider
+      // spread state in context provider to make available in other components
       value={{
         ...state,
       }}

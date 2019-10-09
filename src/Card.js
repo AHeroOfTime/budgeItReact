@@ -2,13 +2,25 @@ import React from 'react';
 import styled from 'styled-components';
 
 import SICardForm from './SICardForm';
+import DICardForm from './DICardForm';
 
 const Card = props => {
   return (
     <CardWrapper>
       <CardTitle>{props.title}</CardTitle>
       <CardBody>
-        <SICardForm addIncome={props.addIncome} />
+        {(() => {
+          switch (props.title) {
+            case 'Monthly Income':
+              return <SICardForm addIncome={props.addIncome} />;
+            case 'Fixed Spending':
+              return <DICardForm />;
+            case 'Variable Spending':
+              return <DICardForm />;
+            default:
+              return null;
+          }
+        })()}
       </CardBody>
     </CardWrapper>
   );

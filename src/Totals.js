@@ -1,13 +1,12 @@
-import React, { Component, useRef, useContext } from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 
 import { SpendingContext } from './SpendingContext';
 
 const Totals = props => {
-  // todo: May not need this ref anymore
   // Context
   const totalValues = useContext(SpendingContext);
-  // ! Remove log
+  // ! Remove log (eventually)
   console.log(totalValues);
 
   return (
