@@ -29,17 +29,16 @@ export default DICardForm;
 
 // Styled Components
 const CardForm = styled.form`
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-gap: 1rem;
 `;
 
 const CardInput = styled.input`
-  flex: 1;
+  min-width: 100px;
   padding: 0.5rem;
 `;
 
 const Button = styled.button`
-  flex: 1;
   padding: 0.5rem;
   border-radius: 0.25rem;
   font-size: 1rem;

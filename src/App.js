@@ -40,12 +40,14 @@ const App = () => {
         <header className="App-header">
           <h2>BudgeIt</h2>
         </header>
-        <IncomeInput addIncome={addIncome} />
-        <div className="spending-container">
-          <FixedSpending />
-          <VariableSpending />
+        <div className="container">
+          <IncomeInput addIncome={addIncome} />
+          <div className="spending-container">
+            <FixedSpending />
+            <VariableSpending />
+          </div>
+          <Totals />
         </div>
-        <Totals />
       </div>
     </SpendingContext.Provider>
   );
