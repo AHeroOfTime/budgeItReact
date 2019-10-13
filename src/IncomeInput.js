@@ -4,9 +4,9 @@ import Card from './Card';
 
 const IncomeInput = props => {
   return (
-    <div>
+    <>
       <Card title={'Monthly Income'} addIncome={props.addIncome} />
-    </div>
+    </>
   );
 };
 

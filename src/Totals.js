@@ -12,7 +12,9 @@ const Totals = props => {
   return (
     <FooterWrapper>
       <h2>Totals</h2>
-      <p>Context Value: {totalValues.income}</p>
+      <p>Income: {totalValues.income}</p>
+      <p>Fixed Spending: {totalValues.fixedSpending}</p>
+      <p>Variable Spending: {totalValues.variableSpending}</p>
     </FooterWrapper>
   );
 };

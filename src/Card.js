@@ -14,7 +14,7 @@ const Card = props => {
             case 'Monthly Income':
               return <SICardForm addIncome={props.addIncome} />;
             case 'Fixed Spending':
-              return <DICardForm />;
+              return <DICardForm addFixedItem={props.addFixedItem} />;
             case 'Variable Spending':
               return <DICardForm />;
             default:

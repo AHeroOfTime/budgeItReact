@@ -2,11 +2,11 @@ import React from 'react';
 
 import Card from './Card';
 
-const FixedSpending = () => {
+const FixedSpending = props => {
   return (
-    <div>
-      <Card title={'Fixed Spending'} />
-    </div>
+    <>
+      <Card title={'Fixed Spending'} addFixedItem={props.addFixedItem} />
+    </>
   );
 };
 

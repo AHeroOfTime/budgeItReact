@@ -12,20 +12,43 @@ import './App.css';
 // TODO: Move header to its own component, add reset button(_there or to total?)
 // TODO: Add Check to inputs for up to 2 decimal places
 // TODO: Create format function for inputs strings -> numbers
+// TODO: Create component for List?
 
 const App = () => {
   // Creating the app's state w/ hook
   const [state, setState] = useState({
     income: 10,
-    fixedSpending: 0,
-    variableSpending: 0,
+    fixedSpending: 20,
+    variableSpending: 30,
+    fixedList: [
+      {
+        id: 1,
+        title: 'Car',
+        amount: 100,
+      },
+      {
+        id: 2,
+        title: 'Insurance',
+        amount: 50,
+      },
+    ],
+    variableList: [],
   });
 
   const addIncome = income => {
     setState({
       // Create copy of state, update income value
       ...state,
-      income: income,
+      income,
+    });
+  };
+
+  const addFixedItem = (fixedSpending, fixedTitle) => {
+    state.fixedList.push(fixedTitle);
+    setState({
+      // Create copy of state, update income value
+      ...state,
+      fixedSpending,
     });
   };
 
@@ -43,7 +66,7 @@ const App = () => {
         <div className="container">
           <IncomeInput addIncome={addIncome} />
           <div className="spending-container">
-            <FixedSpending />
+            <FixedSpending addFixedItem={addFixedItem} />
             <VariableSpending />
           </div>
           <Totals />

@@ -1,26 +1,44 @@
-import React, { useRef } from 'react';
+import React, { useRef, useContext } from 'react';
 import styled from 'styled-components';
+
+import { SpendingContext } from './SpendingContext';
 
 const DICardForm = props => {
   // Double Input Card Form
   // Create ref for input in form
   const inputRef = useRef();
+  const titleRef = useRef();
+  // Context
+  const context = useContext(SpendingContext);
+  const fixedList = context.fixedList;
 
-  const submitIncome = e => {
+  const submitFixedItem = e => {
     e.preventDefault();
 
-    // Check for input in income box, if falsy set to 0
-    const income = inputRef.current.value ? inputRef.current.value : 0;
-    props.addIncome(income);
-    // Clear input
-    inputRef.current.value = '';
+    // Handle fixed amount submission
+    const fixedSpending = inputRef.current.value;
+
+    // Handle title
+    const fixedTitle = titleRef.current.value;
+
+    props.addFixedItem(fixedSpending, fixedTitle);
+
+    // Output to UI?
+    // context.fixedList.map((item, key) => {
+    //   <li key={}
+    // })
   };
 
   return (
-    <CardForm onSubmit={submitIncome}>
-      <CardInput type="text" placeholder="Title" />
-      <CardInput type="number" placeholder="Income" ref={inputRef} />
+    <CardForm onSubmit={submitFixedItem}>
+      <CardInput type="text" placeholder="Title" ref={titleRef} required />
+      <CardInput type="number" placeholder="Amount" ref={inputRef} />
       <Button>Submit</Button>
+      <List>
+        {fixedList.map(item => {
+          return <li key={item.id}>{`${item.title} : $${item.amount}`}</li>;
+        })}
+      </List>
     </CardForm>
   );
 };
@@ -30,11 +48,11 @@ export default DICardForm;
 // Styled Components
 const CardForm = styled.form`
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(45%, 1fr));
   grid-gap: 1rem;
 `;
 
 const CardInput = styled.input`
-  min-width: 100px;
   padding: 0.5rem;
 `;
 
@@ -43,8 +61,11 @@ const Button = styled.button`
   border-radius: 0.25rem;
   font-size: 1rem;
   border: none;
+  grid-column: 1 / span 2;
 
   &:hover {
     background: green;
   }
 `;
+
+const List = styled.ul``;
