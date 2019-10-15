@@ -32,7 +32,18 @@ const App = () => {
         amount: 50,
       },
     ],
-    variableList: [],
+    variableList: [
+      {
+        id: 3,
+        title: 'Movie',
+        amount: 20,
+      },
+      {
+        id: 4,
+        title: 'Food',
+        amount: 15,
+      },
+    ],
   });
 
   const addIncome = income => {

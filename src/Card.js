@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import SICardForm from './SICardForm';
 import DICardForm from './DICardForm';
+import SpendingList from './SpendingList';
 
 const Card = props => {
   return (
@@ -14,9 +15,22 @@ const Card = props => {
             case 'Monthly Income':
               return <SICardForm addIncome={props.addIncome} />;
             case 'Fixed Spending':
-              return <DICardForm addFixedItem={props.addFixedItem} />;
+              return (
+                <>
+                  <DICardForm
+                    addFixedItem={props.addFixedItem}
+                    title={props.title}
+                  />
+                  <SpendingList title={props.title} />
+                </>
+              );
             case 'Variable Spending':
-              return <DICardForm />;
+              return (
+                <>
+                  <DICardForm title={props.title} />
+                  <SpendingList title={props.title} />
+                </>
+              );
             default:
               return null;
           }

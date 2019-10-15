@@ -10,7 +10,6 @@ const DICardForm = props => {
   const titleRef = useRef();
   // Context
   const context = useContext(SpendingContext);
-  const fixedList = context.fixedList;
 
   const submitFixedItem = e => {
     e.preventDefault();
@@ -22,23 +21,13 @@ const DICardForm = props => {
     const fixedTitle = titleRef.current.value;
 
     props.addFixedItem(fixedSpending, fixedTitle);
-
-    // Output to UI?
-    // context.fixedList.map((item, key) => {
-    //   <li key={}
-    // })
   };
 
   return (
     <CardForm onSubmit={submitFixedItem}>
       <CardInput type="text" placeholder="Title" ref={titleRef} required />
-      <CardInput type="number" placeholder="Amount" ref={inputRef} />
+      <CardInput type="number" placeholder="Amount" ref={inputRef} required />
       <Button>Submit</Button>
-      <List>
-        {fixedList.map(item => {
-          return <li key={item.id}>{`${item.title} : $${item.amount}`}</li>;
-        })}
-      </List>
     </CardForm>
   );
 };
@@ -67,5 +56,3 @@ const Button = styled.button`
     background: green;
   }
 `;
-
-const List = styled.ul``;
