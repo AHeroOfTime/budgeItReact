@@ -17,9 +17,9 @@ const DICardForm = props => {
 
     if (props.title === 'Fixed Spending') {
       // Handle fixed amount submission
-      const fixedSpending = inputRef.current.value;
+      let fixedSpending = inputRef.current.value;
       // Handle title
-      const fixedTitle = titleRef.current.value;
+      let fixedTitle = titleRef.current.value;
       const newItem = {
         id: context.fixedList.length + 1,
         title: fixedTitle,
@@ -27,6 +27,10 @@ const DICardForm = props => {
       };
 
       props.addFixedItem(newItem);
+
+      // Clear input fields
+      fixedSpending = '';
+      fixedTitle = '';
     }
   };
 

@@ -12,14 +12,14 @@ import './App.css';
 // TODO: Move header to its own component, add reset button(_there or to total?)
 // TODO: Add Check to inputs for up to 2 decimal places
 // TODO: Create format function for inputs strings -> numbers
-// TODO: Create component for List?
+// TODO: Make function to loop over amounts in fixed/variable arrays and add to variables
 
 const App = () => {
   // Creating the app's state w/ hook
   const [state, setState] = useState({
     income: 10,
-    fixedSpending: 20,
-    variableSpending: 30,
+    fixedSpending: 0,
+    variableSpending: 0,
     fixedList: [
       {
         id: 1,

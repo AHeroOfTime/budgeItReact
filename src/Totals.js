@@ -11,10 +11,13 @@ const Totals = props => {
 
   return (
     <FooterWrapper>
-      <h2>Totals</h2>
-      <p>Income: {totalValues.income}</p>
-      <p>Fixed Spending: {totalValues.fixedSpending}</p>
-      <p>Variable Spending: {totalValues.variableSpending}</p>
+      <p>Monthly Income : {`$${totalValues.income}`}</p>
+      <p>Fixed Spending : {`$${totalValues.fixedSpending}`}</p>
+      <p>Variable Spending : {`$${totalValues.variableSpending}`}</p>
+      <p>
+        Total Spending :{' '}
+        {`$${totalValues.fixedSpending + totalValues.variableSpending}`}
+      </p>
     </FooterWrapper>
   );
 };
