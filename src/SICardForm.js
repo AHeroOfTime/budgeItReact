@@ -1,17 +1,20 @@
-import React, { useRef } from 'react';
+import React, { useRef, useContext } from 'react';
 import styled from 'styled-components';
+
+import { SpendingContext } from './SpendingContext';
 
 const SICardForm = props => {
   // Single Input Card Form
   // Create ref for input in form
   const inputRef = useRef();
+  const context = useContext(SpendingContext);
 
   const submitIncome = e => {
     e.preventDefault();
 
     // Check for input in income box, if falsy set to 0
     const income = inputRef.current.value ? inputRef.current.value : 0;
-    props.addIncome(income);
+    context.addIncome(income);
     // Clear input
     inputRef.current.value = '';
   };

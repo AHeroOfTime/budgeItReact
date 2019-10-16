@@ -44,8 +44,17 @@ const App = () => {
         amount: 15,
       },
     ],
+    addIncome: function(income) {
+      console.log('State Method');
+      setState({
+        // Create copy of state, update income value
+        ...state,
+        income,
+      });
+    },
   });
 
+  // Functions
   const addIncome = income => {
     setState({
       // Create copy of state, update income value
@@ -54,12 +63,13 @@ const App = () => {
     });
   };
 
-  const addFixedItem = (fixedSpending, fixedTitle) => {
-    state.fixedList.push(fixedTitle);
+  const addFixedItem = newItem => {
+    // state.fixedList.push(newItem);
     setState({
-      // Create copy of state, update income value
+      // Create copy of state, update income value & fixed array
       ...state,
-      fixedSpending,
+      fixedList: [...state.fixedList, newItem],
+      fixedSpending: newItem.amount,
     });
   };
 

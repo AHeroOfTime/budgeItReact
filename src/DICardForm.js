@@ -11,20 +11,27 @@ const DICardForm = props => {
   // Context
   const context = useContext(SpendingContext);
 
-  const submitFixedItem = e => {
+  // Functions
+  const submitItem = e => {
     e.preventDefault();
 
-    // Handle fixed amount submission
-    const fixedSpending = inputRef.current.value;
+    if (props.title === 'Fixed Spending') {
+      // Handle fixed amount submission
+      const fixedSpending = inputRef.current.value;
+      // Handle title
+      const fixedTitle = titleRef.current.value;
+      const newItem = {
+        id: context.fixedList.length + 1,
+        title: fixedTitle,
+        amount: fixedSpending,
+      };
 
-    // Handle title
-    const fixedTitle = titleRef.current.value;
-
-    props.addFixedItem(fixedSpending, fixedTitle);
+      props.addFixedItem(newItem);
+    }
   };
 
   return (
-    <CardForm onSubmit={submitFixedItem}>
+    <CardForm onSubmit={submitItem}>
       <CardInput type="text" placeholder="Title" ref={titleRef} required />
       <CardInput type="number" placeholder="Amount" ref={inputRef} required />
       <Button>Submit</Button>
