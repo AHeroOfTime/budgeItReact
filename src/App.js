@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import IncomeInput from './IncomeInput';
 import FixedSpending from './FixedSpending';
@@ -13,6 +13,7 @@ import './App.css';
 // TODO: Add Check to inputs for up to 2 decimal places
 // TODO: Create format function for inputs strings -> numbers
 // TODO: Make function to loop over amounts in fixed/variable arrays and add to variables
+// TODO: useEffect to update spending total states?
 
 const App = () => {
   // Creating the app's state w/ hook
@@ -69,7 +70,7 @@ const App = () => {
       // Create copy of state, update income value & fixed array
       ...state,
       fixedList: [...state.fixedList, newItem],
-      fixedSpending: newItem.amount,
+      fixedSpending: parseFloat(newItem.amount),
     });
   };
 

@@ -18,6 +18,7 @@ const Totals = props => {
         Total Spending :{' '}
         {`$${totalValues.fixedSpending + totalValues.variableSpending}`}
       </p>
+      <p>Disposable Income : $0</p>
     </FooterWrapper>
   );
 };
