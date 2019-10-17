@@ -34,12 +34,12 @@ const App = () => {
     ],
     variableList: [
       {
-        id: 3,
+        id: 1,
         title: 'Movie',
         amount: 20,
       },
       {
-        id: 4,
+        id: 2,
         title: 'Food',
         amount: 15,
       },
