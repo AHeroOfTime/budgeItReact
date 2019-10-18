@@ -23,14 +23,14 @@ const DICardForm = props => {
       const newItem = {
         id: context.fixedList.length + 1,
         title: fixedTitle,
-        amount: fixedSpending,
+        amount: parseFloat(fixedSpending),
       };
 
       props.addFixedItem(newItem);
 
       // Clear input fields
-      fixedSpending = '';
-      fixedTitle = '';
+      inputRef.current.value = '';
+      titleRef.current.value = '';
     }
   };
 

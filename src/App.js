@@ -9,16 +9,16 @@ import { SpendingContext } from './SpendingContext';
 import logo from './logo.svg';
 import './App.css';
 
+//! TODO: useEffect to update spending total states?
 // TODO: Move header to its own component, add reset button(_there or to total?)
 // TODO: Add Check to inputs for up to 2 decimal places
 // TODO: Create format function for inputs strings -> numbers
 // TODO: Make function to loop over amounts in fixed/variable arrays and add to variables
-// TODO: useEffect to update spending total states?
 
 const App = () => {
   // Creating the app's state w/ hook
   const [state, setState] = useState({
-    income: 10,
+    income: 0,
     fixedSpending: 0,
     variableSpending: 0,
     fixedList: [
@@ -45,12 +45,26 @@ const App = () => {
         amount: 15,
       },
     ],
-    addIncome: function(income) {
+    addIncome: income => {
       console.log('State Method');
       setState({
         // Create copy of state, update income value
         ...state,
         income,
+      });
+    },
+    getFixedSpendingTotal: () => {
+      const fixedTotals = state.fixedList.map(item => {
+        return item.amount;
+      });
+
+      const total = fixedTotals.reduce((total, currentValue) => {
+        return total + currentValue;
+      });
+
+      setState({
+        ...state,
+        fixedSpending: total,
       });
     },
   });
@@ -65,15 +79,31 @@ const App = () => {
   };
 
   const addFixedItem = newItem => {
-    // state.fixedList.push(newItem);
     setState({
       // Create copy of state, update income value & fixed array
       ...state,
       fixedList: [...state.fixedList, newItem],
-      fixedSpending: parseFloat(newItem.amount),
     });
   };
 
+  const getFixedSpendingTotal = () => {
+    const fixedTotals = state.fixedList.map(item => {
+      return item.amount;
+    });
+
+    const total = fixedTotals.reduce((total, currentValue) => {
+      return total + currentValue;
+    });
+
+    // setState({
+    //   ...state,
+    //   fixedSpending: total,
+    // });
+
+    return total;
+  };
+
+  console.log(state);
   return (
     <SpendingContext.Provider
       // spread state in context provider to make available in other components

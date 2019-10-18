@@ -6,8 +6,6 @@ import { SpendingContext } from './SpendingContext';
 const Totals = props => {
   // Context
   const totalValues = useContext(SpendingContext);
-  // ! Remove log (eventually)
-  console.log(totalValues);
 
   return (
     <FooterWrapper>
