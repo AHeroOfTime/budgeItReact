@@ -50,7 +50,7 @@ const App = () => {
       setState({
         // Create copy of state, update income value
         ...state,
-        income,
+        income: parseFloat(income),
       });
     },
     getFixedSpendingTotal: () => {
@@ -74,7 +74,7 @@ const App = () => {
     setState({
       // Create copy of state, update income value
       ...state,
-      income,
+      income: parseFloat(income),
     });
   };
 
