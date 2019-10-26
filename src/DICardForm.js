@@ -31,6 +31,10 @@ const DICardForm = props => {
       // Clear input fields
       inputRef.current.value = '';
       titleRef.current.value = '';
+    } else if (props.title === 'Variable Spending') {
+      console.log('else if');
+    } else {
+      console.log('else');
     }
   };
 

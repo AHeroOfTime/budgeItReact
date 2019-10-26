@@ -14,14 +14,14 @@ const SICardForm = props => {
 
     // Check for input in income box, if falsy set to 0
     const income = inputRef.current.value ? inputRef.current.value : 0;
-    context.addIncome(income);
+    props.addIncome(income);
     // Clear input
     inputRef.current.value = '';
   };
 
   return (
     <CardForm onSubmit={submitIncome}>
-      <CardInput type="number" placeholder="Income" ref={inputRef} />
+      <CardInput type="number" placeholder="Income" ref={inputRef} required />
       <Button>Submit</Button>
     </CardForm>
   );

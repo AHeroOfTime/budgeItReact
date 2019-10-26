@@ -9,11 +9,11 @@ import { SpendingContext } from './SpendingContext';
 import logo from './logo.svg';
 import './App.css';
 
-//! TODO: useEffect to update spending total states?
-// TODO: Move header to its own component, add reset button(_there or to total?)
+// ! Income submit after spending submit wipes out new items?
+// TODO: Make function to loop over amounts in fixed/variable arrays and add to variables. AFTER RENDER?
 // TODO: Add Check to inputs for up to 2 decimal places
-// TODO: Create format function for inputs strings -> numbers
-// TODO: Make function to loop over amounts in fixed/variable arrays and add to variables
+// TODO: Create format function for inputs strings -> numbers?
+// TODO: Move header to its own component, add reset button(_there or to total?)
 
 const App = () => {
   // Creating the app's state w/ hook
@@ -45,15 +45,30 @@ const App = () => {
         amount: 15,
       },
     ],
-    addIncome: income => {
-      console.log('State Method');
-      setState({
-        // Create copy of state, update income value
-        ...state,
-        income: parseFloat(income),
-      });
-    },
-    getFixedSpendingTotal: () => {
+    // Functions don't work correctly when passed through w/ context
+    // addIncome: income => {
+    //   console.log('State Method');
+    //   setState({
+    //     // Create copy of state, update income value
+    //     ...state,
+    //     income: parseFloat(income),
+    //   });
+    // },
+    // addFixedItem: newItem => {
+    //   console.log('context');
+    //   setState({
+    //     // Create copy of state, update income value & fixed array
+    //     ...state,
+    //     fixedList: [...state.fixedList, newItem],
+    //   });
+    // },
+  });
+
+  //* Hooks
+  // useEffect runs after every render -- unless 2nd [param] doesn't change
+  useEffect(() => {
+    // Handle fixed totals
+    const getFixedSpendingTotal = () => {
       const fixedTotals = state.fixedList.map(item => {
         return item.amount;
       });
@@ -66,11 +81,13 @@ const App = () => {
         ...state,
         fixedSpending: total,
       });
-    },
-  });
+    };
+    getFixedSpendingTotal();
+  }, [state.fixedSpending, state.fixedList]);
 
-  // Functions
+  //* Functions
   const addIncome = income => {
+    console.log('Prop Method');
     setState({
       // Create copy of state, update income value
       ...state,
@@ -86,23 +103,7 @@ const App = () => {
     });
   };
 
-  const getFixedSpendingTotal = () => {
-    const fixedTotals = state.fixedList.map(item => {
-      return item.amount;
-    });
-
-    const total = fixedTotals.reduce((total, currentValue) => {
-      return total + currentValue;
-    });
-
-    // setState({
-    //   ...state,
-    //   fixedSpending: total,
-    // });
-
-    return total;
-  };
-
+  // ! DELETEDELETEDELETEDELETEDELETE
   console.log(state);
   return (
     <SpendingContext.Provider

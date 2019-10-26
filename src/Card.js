@@ -18,8 +18,8 @@ const Card = props => {
               return (
                 <>
                   <DICardForm
-                    addFixedItem={props.addFixedItem}
                     title={props.title}
+                    addFixedItem={props.addFixedItem}
                   />
                   <SpendingList title={props.title} />
                 </>
