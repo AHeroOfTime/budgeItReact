@@ -9,8 +9,9 @@ import { SpendingContext } from './SpendingContext';
 import logo from './logo.svg';
 import './App.css';
 
-// ! Income submit after spending submit wipes out new items?
-// TODO: Make function to loop over amounts in fixed/variable arrays and add to variables. AFTER RENDER?
+// ! Warning in console - useEffect dep?
+// ! First useEffect not saving state before 2nd runs?
+// TODO: Make function to loop over amounts in fixed/variable arrays and add to variables. AFTER RENDER? --Done(for fixed)?
 // TODO: Add Check to inputs for up to 2 decimal places
 // TODO: Create format function for inputs strings -> numbers?
 // TODO: Move header to its own component, add reset button(_there or to total?)
@@ -45,23 +46,6 @@ const App = () => {
         amount: 15,
       },
     ],
-    // Functions don't work correctly when passed through w/ context
-    // addIncome: income => {
-    //   console.log('State Method');
-    //   setState({
-    //     // Create copy of state, update income value
-    //     ...state,
-    //     income: parseFloat(income),
-    //   });
-    // },
-    // addFixedItem: newItem => {
-    //   console.log('context');
-    //   setState({
-    //     // Create copy of state, update income value & fixed array
-    //     ...state,
-    //     fixedList: [...state.fixedList, newItem],
-    //   });
-    // },
   });
 
   //* Hooks
@@ -76,18 +60,36 @@ const App = () => {
       const total = fixedTotals.reduce((total, currentValue) => {
         return total + currentValue;
       });
-
       setState({
         ...state,
         fixedSpending: total,
       });
     };
+
     getFixedSpendingTotal();
   }, [state.fixedSpending, state.fixedList]);
 
+  useEffect(() => {
+    // Handle variable totals
+    const getVariableSpendingTotal = () => {
+      const variableTotals = state.variableList.map(item => {
+        return item.amount;
+      });
+
+      const total = variableTotals.reduce((total, currentValue) => {
+        return total + currentValue;
+      });
+
+      setState({
+        ...state,
+        variableSpending: total,
+      });
+    };
+    getVariableSpendingTotal();
+  }, [state.variableSpending, state.variableList]);
+
   //* Functions
   const addIncome = income => {
-    console.log('Prop Method');
     setState({
       // Create copy of state, update income value
       ...state,
@@ -100,6 +102,14 @@ const App = () => {
       // Create copy of state, update income value & fixed array
       ...state,
       fixedList: [...state.fixedList, newItem],
+    });
+  };
+
+  const addVariableItem = newItem => {
+    setState({
+      // Create copy of state, update income value & variable array
+      ...state,
+      variableList: [...state.variableList, newItem],
     });
   };
 
@@ -120,7 +130,7 @@ const App = () => {
           <IncomeInput addIncome={addIncome} />
           <div className="spending-container">
             <FixedSpending addFixedItem={addFixedItem} />
-            <VariableSpending />
+            <VariableSpending addVariableItem={addVariableItem} />
           </div>
           <Totals />
         </div>

@@ -2,10 +2,13 @@ import React from 'react';
 
 import Card from './Card';
 
-const VariableSpending = () => {
+const VariableSpending = props => {
   return (
     <div>
-      <Card title={'Variable Spending'} />
+      <Card
+        title={'Variable Spending'}
+        addVariableItem={props.addVariableItem}
+      />
     </div>
   );
 };

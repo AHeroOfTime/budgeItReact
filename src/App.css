@@ -29,4 +29,5 @@
 
 .spending-container {
   display: grid;
+  margin-bottom: 150px;
 }

@@ -27,7 +27,10 @@ const Card = props => {
             case 'Variable Spending':
               return (
                 <>
-                  <DICardForm title={props.title} />
+                  <DICardForm
+                    title={props.title}
+                    addVariableItem={props.addVariableItem}
+                  />
                   <SpendingList title={props.title} />
                 </>
               );
